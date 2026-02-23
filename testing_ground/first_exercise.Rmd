@@ -1,0 +1,24 @@
+``` {r answers}
+dat <- matrix(c(
+  "blau",   "bei Sonnenschein",
+  "gelb",   "bei Sonnenuntergang"),
+  nrow = 2
+)
+i <- sample(1:ncol(dat), 1)
+color <- dat[1, i]
+time <- dat[2, i]
+```
+
+Question
+========
+Welche Farbe hat der Himmel `r time`?
+
+Solution
+========
+Der Himmel ist auf der Erde (normalersweise) `r color`.
+
+Meta-information
+================
+extype: string
+exsolution: `r color`
+exname: Himmelsfarbe

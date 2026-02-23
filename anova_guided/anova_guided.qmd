@@ -1,0 +1,37 @@
+---
+title: "anova_guided"
+format:
+  html:
+    css: webex.css
+    include-after-body: webex.js
+editor: visual
+---
+
+## Einfaktorielle Varianzanalyse (ANOVA)
+
+Eine internationale Universität hat mithilfe eines Fragebogens die Zufriedenheit von Menschen in drei verschiedenen Lebensabschnitten erfasst: im jungen Erwachsenenalter (18-30), im mittleren Alter (31-50) oder dem gehobenen Alter (51+).
+
+#### a) Hypothesen
+
+Bevor wir loslegen, müssen wir  zuerst einmal die abhaengige sowie die unabhaengigen Variablen herausfinden. Die abhaengige Variable ist jenes Merkmal, welches beeinflusst wird. Die unabhaengige Variable hingegen, stellt jenes Merkmal dar, welches das zu beeinflussende Merkmal (also die abhaengige Variable) beeinflusst.
+
+Behalten wir diese Definitionen im Hinterkopf und wenden sie auf unser Beispiel an. Im Text finden sich zwei Variablen: Zufriedeneheit & Lebensabschnitt (mit drei Stufen bzw. Abschnitten). Da Zufriedenheit mit einem "Fragebogen [...] erfasst" wurde, legt dies sehr nah, dass Zufriedenheit die abhaengige Variable ist. Die verbleibende Variable Lebensabschnitt stellt nun zwangsläufig die unabhaengige Variable dar. Dies macht insofern Sinn, da der Lebensabschnitt einen Einfluss auf die Zufriedenheit haben kann.
+
+Nun kommen wir zum Kern der statistischen Analyse: der Nullhypothese (H0) sowie der Alternativhypothese (H1). Beide machen Annahmen über die Daten, welche dann statistisch überprüft werden. Wichtig zu beachten ist, dass die Annahmen - und somit auch die Ergebnisse - Aussagen auf der Stichprobenebene darstellen. Bedeutet konkret: Die Daten repraesentieren nur einen Teil aller Leute auf der Populationsebene, womit die Werte bei nicht-gemessenen Personen abweichen können.
+
+Die Nullhypothese macht die Annahme, dass es keine signifikanten Unterschiede in der Auspraegung der abhaengigen Variable in Abhaengigkeit von den unabhaengigen Variablen gibt. Die Nullhypothese (H0) lautet in unserem Beispiel daher so: Es gibt keinen signifikanten Unterschied in der durchschnittlichen Zufriedenheit der Menschen in Abhaengigkeit vom Lebensabschnitt.
+
+Die Alternativhypothese hingegen macht die Annahme, dass es einen signifikanten Unterschied in der Auspraegung der abhaengigen Variable in Abhaengigkeit von der/den unabhaengigen Variablen gibt. Daher lautet die Alternativhypothese (H1) in unserem Beispiel so: Es gibt einen signifikanten Unterschied in der durchschnittlichen Zufriedenheit der Menschen in Abhaengigkeit vom Lebensabschnitt.
+
+#### b) Deskriptive Daten
+
+Bevor man anfaengt die Daten zu analysieren, ist es hilfreich diese zu visualisieren. Mithilfe von Boxplots (unterteilt nach den Faktoren der unabhängigen Variable) schafft man sich einen guten Ueberblick. Ein sehr nuetzlicher Befehl hierfuer ist `aggregate(AV ~ UV, Datensatz, Funktion)`, denn er gibt auf einen Schlag Boxplots fuer alle gewaehlten Variablenstufen.
+
+
+
+Wenn man diesen Befehl ausführt, bekommt man folgendes Bild:
+
+
+
+Zusaetzlich ist es hilfreich die deskriptiven Angaben - Mittelwert sowie Standardabweichung - zu bestimmen.
+

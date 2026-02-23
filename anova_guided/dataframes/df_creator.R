@@ -2,10 +2,14 @@
   
   # 0. Sequenz der Arbeitsschritte ----
     
-    set.seed(1001)
+    set.seed(1005)
     
     # Notizen:
-    #   
+    #   1001 -> mean & sd gut [9x] + Ergebnis signifikant* (df_1)
+    #   1003 -> mean & sd gut + Ergebnis nicht signifikant (df_3)
+    #   1005 -> mean & sd gut [16x] + Ergebnis knapp nicht signifikant (df_5)
+    #   1007 -> mean & sd gut + Ergebnis signifikant** (df_7)
+
     
   # 1. Werte für jede Gruppe ----
     
@@ -14,13 +18,13 @@
     #   rnorm() = Generieren eines Datensatz mit {1}n, {2}mean, {3}sd
     
     g1 <- round(rnorm(10, 50, 10))
-    g2 <- round(rnorm(10, 56, 10))
-    g3 <- round(rnorm(10, 52, 10))
+    g2 <- round(rnorm(10, 55, 10))
+    g3 <- round(rnorm(10, 45, 10))
     
     # 1-faktorielle ANOVA:
     #   Hier wird eine randomisierte Normalverteulung [auf Stichprobenebene und
-    #   nicht Populationsebene] erstellt für jede Gruppe erstellt. Denn bei
-    #   einer 1-faktoriellen ANOVA wird die Streuung der einzelnen Gruppen
+    #   nicht Populationsebene] für jede Gruppe erstellt. Denn bei einer
+    #   1-faktoriellen ANOVA wird die Streuung der einzelnen Gruppen
     #   miteinander verglichen.
     
     # 1.1 Mittelwerte jeder Gruppe
@@ -52,10 +56,11 @@
     
     # 2.1 Personen
       
-      Namen <- c("Ben", "Ken", "Ben", "Ken", "Ben", "Ken", "Ben", "Ken", "Ben", 
-                 "Ken", "Ben", "Ken", "Ben", "Ken", "Ben", "Ken", "Ben", "Ken", 
-                 "Ben", "Ken", "Ben", "Ken", "Ben", "Ken", "Ben", "Ken", "Ben", 
-                 "Ken", "Ben", "Ken")
+      Namen <- c("Muhammad", "Aya", "Lethabo", "Fatima", "Jakari", "Onalerona",
+                 "Mateo", "Isabella", "Noah", "Emma", "Santiago", "Maria",
+                 "Minato", "Mei", "Ram", "Rekha", "Somchai", "Nguyên", "Oliver",
+                 "Sophia", "Luka", "Yelena", "Gabriel", "Mia", "Jack",
+                 "Charlotte", "Manea", "Kiana", "Ariki", "Aroha")
       
     # 2.2 Nummerierung der Personen
       
@@ -73,21 +78,24 @@
       
   # 3. Erstellen des df ----
     
-    df <- data.frame(Vp_Nummer, Namen, Gruppen, Index, c(g1, g2, g3))
+    df_3 <- data.frame(Vp_Nummer, Namen, Gruppen, Index, c(g1, g2, g3))
     
+      
+      
       # Umbennenen der Spalten
       
-      colnames(df) <- c("VP_Nummer", "Name", "Gruppe", "Index", "AV")
+      colnames(df_3) <- c("VP_Nummer", "Name", "Gruppe", "Index", "AV")
       
   # 4. Provisorische Analyse ----
     
     library(afex)
     library(performance)
     
-    e <- aov_ez("VP_Nummer", "AV", df, between = "Gruppe")
+    e <- aov_ez("VP_Nummer", "AV", df_7, between = "Gruppe")
     check_homogeneity(e)
+    summary(e)
     
   # 5. Abspeichern des df
     
-    write.csv(df, "df.csv", row.names = FALSE)
+    write.csv(df_7, "df_7.csv", row.names = FALSE)
     

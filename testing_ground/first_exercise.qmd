@@ -1,0 +1,18 @@
+---
+title: "first_exercise"
+format:
+  html:
+    css: webex.css
+    include-after-body: webex.js
+editor: visual
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+# package and list of various exercises
+library("exams2forms")
+```
+
+```{r quiz, echo=FALSE, message=FALSE, results="asis"}
+exams2forms("first_exercise.Rmd")
+```
